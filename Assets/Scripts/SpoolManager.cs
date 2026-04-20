@@ -9,6 +9,7 @@ public class SpoolManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        Application.targetFrameRate = 60;
     }
 
     public void MatchSlotToSpool(SlotDrag slot, Spool spool)
