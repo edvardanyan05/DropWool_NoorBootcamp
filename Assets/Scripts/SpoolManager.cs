@@ -30,4 +30,16 @@ public class SpoolManager : MonoBehaviour
         spool.transform.SetParent(freeSlot);
         spool.transform.position = freeSlot.position;
     }
+
+    public bool HasFreeSlot()
+    {
+        foreach (Transform t in topSlots)
+        {
+            if (t.childCount == 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

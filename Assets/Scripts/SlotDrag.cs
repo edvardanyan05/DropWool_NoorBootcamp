@@ -91,6 +91,11 @@ public class SlotDrag : MonoBehaviour
         {
             if (col.CompareTag(slotColor + "Spool"))
             {
+                if (!SpoolManager.Instance.HasFreeSlot())
+                {
+                    transform.position = startPosition;
+                    return;
+                }
                 SpoolManager.Instance.MatchSlotToSpool(this, col.GetComponent<Spool>());
                 Destroy(gameObject);
                 return;
