@@ -1,107 +1,203 @@
 using UnityEngine;
-using Ray = UnityEngine.Ray;
-using Plane = UnityEngine.Plane;
-using Vector3 = UnityEngine.Vector3;
 
 public class SlotDrag : MonoBehaviour
 {
     public string slotColor;
-    public BoxCollider dragArea;
+    public Collider dragArea;
 
-    private bool isDragging = false;
-    private Vector3 startPosition;
-    private Camera mainCamera;
+    private Camera cam;
+    private bool dragging;
 
-    private float minX, maxX, minY, maxY;
+    private Vector3 startPos;
+    private float frontZ;
 
     void Start()
     {
-        mainCamera = Camera.main;
-        startPosition = transform.position;
+        cam = Camera.main;
+        startPos = transform.position;
 
-        Bounds bounds = dragArea.bounds;
+        frontZ = startPos.z - 0.3f;
 
-        minX = bounds.min.x;
-        maxX = bounds.max.x;
-        minY = bounds.min.y;
-        maxY = bounds.max.y;
+        OccupyCurrentCell();
     }
 
     void Update()
     {
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
-            Ray ray = mainCamera.ScreenPointToRay(touch.position);
+            Touch t = Input.GetTouch(0);
 
-            HandleInput(ray,
-                touch.phase == TouchPhase.Began,
-                touch.phase == TouchPhase.Moved,
-                touch.phase == TouchPhase.Ended);
+            HandleInput(
+                t.position,
+                t.phase == TouchPhase.Began,
+                t.phase == TouchPhase.Moved || t.phase == TouchPhase.Stationary,
+                t.phase == TouchPhase.Ended || t.phase == TouchPhase.Canceled
+            );
         }
         else
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            HandleInput(ray,
+            HandleInput(
+                Input.mousePosition,
                 Input.GetMouseButtonDown(0),
                 Input.GetMouseButton(0),
-                Input.GetMouseButtonUp(0));
+                Input.GetMouseButtonUp(0)
+            );
         }
     }
 
-    void HandleInput(Ray ray, bool began, bool moved, bool ended)
+    void HandleInput(Vector3 screenPos, bool began, bool moved, bool ended)
     {
+        Ray ray = cam.ScreenPointToRay(screenPos);
+
         if (began)
         {
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 if (hit.transform == transform)
-                    isDragging = true;
+                {
+                    dragging = true;
+                    FreeOldCell();
+                }
             }
         }
 
-        if (moved && isDragging)
+        if (moved && dragging)
         {
-            Plane plane = new Plane(Vector3.back, startPosition);
-
-            if (plane.Raycast(ray, out float distance))
+            if (dragArea.Raycast(ray, out RaycastHit hit, 100f))
             {
-                Vector3 pos = ray.GetPoint(distance);
+                Vector3 p = hit.point;
 
-                float x = Mathf.Clamp(pos.x, minX, maxX);
-                float y = Mathf.Clamp(pos.y, minY, maxY);
-
-                transform.position = new Vector3(x, y, startPosition.z);
+                transform.position = new Vector3(
+                    p.x,
+                    p.y,
+                    frontZ
+                );
             }
         }
 
-        if (ended && isDragging)
+        if (ended && dragging)
         {
-            isDragging = false;
-            CheckMatch();
+            dragging = false;
+            CheckSpoolOrSnap();
         }
     }
 
-    void CheckMatch()
+    void CheckSpoolOrSnap()
     {
-        Collider[] nearby = Physics.OverlapSphere(transform.position, 0.5f);
+        Collider[] near = Physics.OverlapSphere(transform.position, 0.6f);
 
-        foreach (var col in nearby)
+        foreach (var c in near)
         {
-            if (col.CompareTag(slotColor + "Spool"))
+            Spool spool = c.GetComponent<Spool>();
+
+            if (spool != null)
             {
-                if (!SpoolManager.Instance.HasFreeSlot())
+                if (c.CompareTag(slotColor + "Spool"))
                 {
-                    transform.position = startPosition;
+                    if (SpoolManager.Instance.HasFreeSlot())
+                    {
+                        FreeOldCell();
+                        SpoolManager.Instance.MatchSlotToSpool(this, spool);
+                        Destroy(gameObject);
+                        return;
+                    }
+                    else
+                    {
+                        ReturnBack();
+                        return;
+                    }
+                }
+                else
+                {
+                    ReturnBack();
                     return;
                 }
-                SpoolManager.Instance.MatchSlotToSpool(this, col.GetComponent<Spool>());
-                Destroy(gameObject);
-                return;
             }
         }
 
-        transform.position = startPosition;
+        SnapToNearestCell();
+    }
+
+    void SnapToNearestCell()
+    {
+        GridCell[] cells = FindObjectsByType<GridCell>();
+
+        GridCell nearest = null;
+        float best = float.MaxValue;
+
+        foreach (var c in cells)
+        {
+            float d = Vector2.Distance(
+                new Vector2(transform.position.x, transform.position.y),
+                new Vector2(c.transform.position.x, c.transform.position.y)
+            );
+
+            if (d < best)
+            {
+                best = d;
+                nearest = c;
+            }
+        }
+
+        if (nearest == null)
+        {
+            ReturnBack();
+            return;
+        }
+
+        if (nearest.isOccupied && nearest.currentSlot != this)
+        {
+            ReturnBack();
+            return;
+        }
+
+        nearest.isOccupied = true;
+        nearest.currentSlot = this;
+
+        Vector3 target = nearest.transform.position;
+        target.z = frontZ;
+
+        transform.position = target;
+        startPos = target;
+    }
+
+    void ReturnBack()
+    {
+        transform.position = startPos;
+        OccupyCurrentCell();
+    }
+
+    void OccupyCurrentCell()
+    {
+        GridCell[] cells = FindObjectsByType<GridCell>();
+
+        foreach (var c in cells)
+        {
+            float d = Vector2.Distance(
+                new Vector2(startPos.x, startPos.y),
+                new Vector2(c.transform.position.x, c.transform.position.y)
+            );
+
+            if (d < 0.4f)
+            {
+                c.isOccupied = true;
+                c.currentSlot = this;
+                return;
+            }
+        }
+    }
+
+    void FreeOldCell()
+    {
+        GridCell[] cells = FindObjectsByType<GridCell>();
+
+        foreach (var c in cells)
+        {
+            if (c.currentSlot == this)
+            {
+                c.currentSlot = null;
+                c.isOccupied = false;
+            }
+        }
     }
 }
