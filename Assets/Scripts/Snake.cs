@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class Snake : MonoBehaviour
@@ -23,9 +22,14 @@ public class Snake : MonoBehaviour
     {
         if (bodyParts.Count == 0) return;
 
-        GameObject body = bodyParts[0];
+        // позиция удаляемого сегмента
+        Vector3 removedPos = bodyParts[0].transform.position;
+
+        Destroy(bodyParts[0]);
         bodyParts.RemoveAt(0);
-        Destroy(body);
+
+        // голова уходит назад на место удалённого сегмента
+        transform.position = removedPos;
 
         if (bodyParts.Count == 0)
         {
