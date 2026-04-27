@@ -607,6 +607,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1617059064}
   - {fileID: 1688185109}
   - {fileID: 1832869309}
   m_Father: {fileID: 0}
@@ -919,7 +920,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed2041a690fc80479ecaef0f919ddff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spool
-  spoolName: Red
+  spoolColor: Red
+  thread: {fileID: 1837016352}
 --- !u!136 &124052127
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2587,7 +2589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed2041a690fc80479ecaef0f919ddff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spool
-  spoolName: Green
+  spoolColor: Green
+  thread: {fileID: 730422709}
 --- !u!136 &417499071
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2780,6 +2783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 537110443}
   - component: {fileID: 537110442}
+  - component: {fileID: 537110444}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2815,6 +2819,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &537110444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537110441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e9f22d1522af4478343fc92f213a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  winPanel: {fileID: 1832869308}
 --- !u!1 &562156297
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,7 +3683,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed2041a690fc80479ecaef0f919ddff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spool
-  spoolName: Oringe
+  spoolColor: Oringe
+  thread: {fileID: 383947199}
 --- !u!136 &699107403
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4679,6 +4697,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SlotDrag
   slotColor: Green
   dragArea: {fileID: 1588712504}
+--- !u!1 &1006828069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1006828070}
+  - component: {fileID: 1006828072}
+  - component: {fileID: 1006828071}
+  m_Layer: 5
+  m_Name: MusicOn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1006828070
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006828069}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5358672, y: 0.31404445, z: 0.2309575}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1617059064}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.6333334}
+  m_AnchoredPosition: {x: 1, y: -2}
+  m_SizeDelta: {x: 100, y: 87.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1006828071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006828069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5254902, g: 1, b: 0.39215687, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 80b3f103573407c4a9b489ef45d52663, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1006828072
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006828069}
+  m_CullTransparentMesh: 1
 --- !u!1 &1056941485
 GameObject:
   m_ObjectHideFlags: 0
@@ -4935,6 +5025,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GridCell
   isOccupied: 0
   currentSlot: {fileID: 0}
+--- !u!1 &1127249420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1127249421}
+  - component: {fileID: 1127249423}
+  - component: {fileID: 1127249422}
+  m_Layer: 5
+  m_Name: MusicOff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1127249421
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127249420}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.535867, y: 0.2829229, z: 0.2309575}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1617059064}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: -0.3}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1127249422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127249420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5254902, g: 1, b: 0.39215687, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 6b297cfc88794be4f9078f998d704ed5, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1127249423
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127249420}
+  m_CullTransparentMesh: 1
 --- !u!1 &1140063665
 GameObject:
   m_ObjectHideFlags: 0
@@ -7098,6 +7260,155 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8, y: 1.4233059e-13, z: 8}
   m_Center: {x: 9.313226e-10, y: 0.0000019073486, z: 0}
+--- !u!1 &1617059063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1617059064}
+  - component: {fileID: 1617059068}
+  - component: {fileID: 1617059067}
+  - component: {fileID: 1617059066}
+  - component: {fileID: 1617059065}
+  m_Layer: 5
+  m_Name: MusicButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1617059064
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617059063}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1485599, y: 6.96422, z: 7.12045}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1006828070}
+  - {fileID: 1127249421}
+  m_Father: {fileID: 66460337}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 603.5945, y: 1303.0054}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1617059065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617059063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf3dfde2bdbdcf499ea1c80a37ba43f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  musicOnIcon: {fileID: 1006828069}
+  musicOffIcon: {fileID: 1127249420}
+--- !u!114 &1617059066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617059063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1617059067}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1617059065}
+        m_TargetAssemblyTypeName: MusicButton, Assembly-CSharp
+        m_MethodName: Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1617059067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617059063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5254902, g: 1, b: 0.39215687, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1617059068
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617059063}
+  m_CullTransparentMesh: 1
 --- !u!1 &1688185108
 GameObject:
   m_ObjectHideFlags: 0
@@ -9026,7 +9337,7 @@ GameObject:
   - component: {fileID: 3469287837824326209}
   m_Layer: 0
   m_Name: Body 4
-  m_TagString: Untagged
+  m_TagString: PurpleBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9045,7 +9356,7 @@ GameObject:
   - component: {fileID: 3469287836813927818}
   m_Layer: 0
   m_Name: Body 1
-  m_TagString: Untagged
+  m_TagString: RedBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9064,7 +9375,7 @@ GameObject:
   - component: {fileID: 3469287837501673428}
   m_Layer: 0
   m_Name: Body 2
-  m_TagString: Untagged
+  m_TagString: GreenBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9081,6 +9392,7 @@ GameObject:
   - component: {fileID: 1512232943}
   - component: {fileID: 1512232942}
   - component: {fileID: 919132149438503193}
+  - component: {fileID: 919132149438503194}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -9111,6 +9423,23 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &919132149438503194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149438503192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a4f90d348e0934dbba09a66835baae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  bodyParts:
+  - {fileID: 919132148758212758}
+  - {fileID: 919132149177752268}
+  - {fileID: 919132149561803915}
+  - {fileID: 919132147772903263}
 --- !u!1 &919132149561803915
 GameObject:
   m_ObjectHideFlags: 0
@@ -9125,7 +9454,7 @@ GameObject:
   - component: {fileID: 3469287837084062101}
   m_Layer: 0
   m_Name: Body 3
-  m_TagString: Untagged
+  m_TagString: OringeBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9167,7 +9496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed2041a690fc80479ecaef0f919ddff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spool
-  spoolName: Purple
+  spoolColor: Purple
+  thread: {fileID: 3211113945209631992}
 --- !u!136 &992743971388496142
 CapsuleCollider:
   m_ObjectHideFlags: 0

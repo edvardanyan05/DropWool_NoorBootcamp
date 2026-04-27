@@ -11,8 +11,18 @@ public class SpoolManager : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
+    public bool HasFreeSlot()
+    {
+        foreach (Transform t in topSlots)
+        {
+            if (t.childCount == 0)
+                return true;
+        }
+        return false;
+    }
+
     public void MatchSlotToSpool(SlotDrag slot, Spool spool)
-    {    
+    {
         Transform freeSlot = null;
         foreach (Transform t in topSlots)
         {
@@ -23,23 +33,43 @@ public class SpoolManager : MonoBehaviour
             }
         }
 
-        if (freeSlot == null)
-        {
-            return;
-        }
+        if (freeSlot == null) return;
+
         spool.transform.SetParent(freeSlot);
-        spool.transform.position = freeSlot.position;
+        spool.transform.localPosition = Vector3.zero;
+
+        TryRemoveBody(spool);
     }
 
-    public bool HasFreeSlot()
+    void TryRemoveBody(Spool spool)
     {
-        foreach (Transform t in topSlots)
+        string nextColor = Snake.Instance.GetNextBodyColor();
+        if (string.IsNullOrEmpty(nextColor)) return;
+
+        foreach (Transform slot in topSlots)
         {
-            if (t.childCount == 0)
+            if (slot == null || slot.childCount == 0) continue;
+
+            Spool s = slot.GetComponentInChildren<Spool>();
+            if (s == null) continue;
+
+            if (s.spoolColor + "Body" == nextColor)
             {
-                return true;
+                s.ShowThread();
+                Snake.Instance.RemoveFirstBody();
+
+                GameObject toDestroy = s.gameObject;
+                slot.DetachChildren();
+                Destroy(toDestroy, 1f);
+
+                Invoke(nameof(TryRemoveBodyDelayed), 1.1f);
+                return;
             }
         }
-        return false;
+    }
+
+    void TryRemoveBodyDelayed()
+    {
+        TryRemoveBody(null);
     }
 }

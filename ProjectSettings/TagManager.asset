@@ -9,6 +9,10 @@ TagManager:
   - PurpleSpool
   - OringeSpool
   - Chicken
+  - RedBody
+  - GreenBody
+  - PurpleBody
+  - OringeBody
   layers:
   - Default
   - TransparentFX
