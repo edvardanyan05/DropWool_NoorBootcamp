@@ -16,5 +16,6 @@ public class WinPanel : MonoBehaviour
     {
         winPanel.SetActive(true);
         Time.timeScale = 0f;
+        MusicManager.instance.PlayWin();
     }
 }

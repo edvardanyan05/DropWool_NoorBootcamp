@@ -16,5 +16,6 @@ public class LosePanel : MonoBehaviour
     {
         losePanel.SetActive(true);
         Time.timeScale = 0f;
+        MusicManager.instance.PlayLose();
     }
 }
