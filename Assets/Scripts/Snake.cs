@@ -15,7 +15,7 @@ public class Snake : MonoBehaviour
     public string GetNextBodyColor()
     {
         if (bodyParts.Count == 0) return "";
-        return bodyParts[0].tag;
+        return bodyParts[1].tag;
     }
 
     public void RemoveFirstBody()
@@ -23,15 +23,15 @@ public class Snake : MonoBehaviour
         if (bodyParts.Count == 0) return;
 
         // позиция удаляемого сегмента
-        Vector3 removedPos = bodyParts[0].transform.position;
+        Vector3 removedPos = bodyParts[1].transform.position;
 
-        Destroy(bodyParts[0]);
-        bodyParts.RemoveAt(0);
+        Destroy(bodyParts[1]);
+        bodyParts.RemoveAt(1);
 
         // голова уходит назад на место удалённого сегмента
-        transform.position = removedPos;
+        bodyParts[0].transform.position -= 1f * Vector3.left;
 
-        if (bodyParts.Count == 0)
+        if (bodyParts.Count == 1)
         {
             WinPanel.Instance.ShowWin();
         }
