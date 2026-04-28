@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class SlotDrag : MonoBehaviour
 {
+    public int RedCount;
+    public int PurpleCount;
+    public int GreenCount;
+    public int OringeCount;
     public string slotColor;
     public Collider dragArea;
 
@@ -98,7 +102,38 @@ public class SlotDrag : MonoBehaviour
                     {
                         FreeOldCell();
                         SpoolManager.Instance.MatchSlotToSpool(this, spool);
-                        Destroy(gameObject);
+                        if(slotColor == "Red")
+                        {
+                            RedCount--;
+                            if(RedCount <= 0)
+                            {
+                                Destroy(gameObject);
+                            }
+                        }
+                        if (slotColor == "Green")
+                        {
+                            GreenCount--;
+                            if (GreenCount <= 0)
+                            {
+                                Destroy(gameObject);
+                            }
+                        }
+                        if(slotColor == "Purple")
+                        {
+                            PurpleCount--;
+                            if(PurpleCount <= 0)
+                            {
+                                Destroy(gameObject);
+                            }
+                        }
+                        if (slotColor == "Oringe")
+                        {
+                            OringeCount--;
+                            if (OringeCount <= 0)
+                            {
+                                Destroy(gameObject);
+                            }
+                        }
                         return;
                     }
                     else
