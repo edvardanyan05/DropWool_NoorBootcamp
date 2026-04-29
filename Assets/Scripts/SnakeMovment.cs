@@ -8,7 +8,6 @@ public class SnakeMovment : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(Vector3.left * speed * Time.deltaTime);
-        //rb.AddForce(Vector3.up* speed * Time.deltaTime);
     }
 
     void OnTriggerEnter(Collider other)

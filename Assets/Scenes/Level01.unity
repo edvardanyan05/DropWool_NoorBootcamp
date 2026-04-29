@@ -4917,7 +4917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnakeMovment
   rb: {fileID: 1119518508}
-  speed: 7
+  speed: 8
 --- !u!54 &1119518508
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9736,7 +9736,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8136605143271189865}
   - component: {fileID: 8908357455193044949}
-  - component: {fileID: 8908357455193044948}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -9744,18 +9743,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8908357455193044948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8908357455193044947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 244a9bbbc369adc43b7900e4c4184d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!136 &8908357455193044949
 CapsuleCollider:
   m_ObjectHideFlags: 0

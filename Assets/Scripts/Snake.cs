@@ -22,13 +22,11 @@ public class Snake : MonoBehaviour
     {
         if (bodyParts.Count == 0) return;
 
-        // позиция удаляемого сегмента
         Vector3 removedPos = bodyParts[1].transform.position;
 
         Destroy(bodyParts[1]);
         bodyParts.RemoveAt(1);
 
-        // голова уходит назад на место удалённого сегмента
         bodyParts[0].transform.position -= 1f * Vector3.left;
 
         if (bodyParts.Count == 1)

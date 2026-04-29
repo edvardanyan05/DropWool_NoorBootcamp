@@ -3497,7 +3497,7 @@ Transform:
   m_GameObject: {fileID: 547312589}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.73, y: -4.47, z: -1.12}
+  m_LocalPosition: {x: 0.01, y: 0.06, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3863,7 +3863,7 @@ GameObject:
   - component: {fileID: 584505172}
   - component: {fileID: 584505175}
   - component: {fileID: 584505174}
-  - component: {fileID: 584505173}
+  - component: {fileID: 584505176}
   m_Layer: 0
   m_Name: Body8
   m_TagString: PurpleBody
@@ -3886,28 +3886,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1119518506}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
---- !u!95 &584505173
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584505171}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3c8bc8263d77e48468a56adaf2cd2808, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &584505174
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3965,6 +3943,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584505171}
   m_Mesh: {fileID: -7387706064836869012, guid: 916366504a673054e8a3b7d87546a424, type: 3}
+--- !u!95 &584505176
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584505171}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8bc8263d77e48468a56adaf2cd2808, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &605779330
 GameObject:
   m_ObjectHideFlags: 0
@@ -6150,7 +6150,7 @@ Transform:
   m_GameObject: {fileID: 1017473438}
   serializedVersion: 2
   m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
-  m_LocalPosition: {x: 3.97, y: 0.7, z: 2.4}
+  m_LocalPosition: {x: -4.12, y: 0.7, z: -3.92}
   m_LocalScale: {x: 1.2044275, y: 1.3756531, z: 1.4285711}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6508,7 +6508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnakeMovment
   rb: {fileID: 1119518508}
-  speed: 8
+  speed: 6
 --- !u!54 &1119518508
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12210,7 +12210,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8136605143271189865}
   - component: {fileID: 8908357455193044949}
-  - component: {fileID: 8908357455193044948}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -12218,18 +12217,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8908357455193044948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8908357455193044947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 244a9bbbc369adc43b7900e4c4184d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!136 &8908357455193044949
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12250,7 +12237,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
-  m_Height: 7
+  m_Height: 6
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &9112894049180891498
